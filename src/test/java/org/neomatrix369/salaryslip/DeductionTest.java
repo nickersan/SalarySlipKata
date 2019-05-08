@@ -25,7 +25,7 @@ public class DeductionTest {
     public void testIncomeTaxWithinHigherThreshold() {
 
         assertEquals(((43000 - 11000) * 0.2) + (1 * 0.4), INCOME_TAX.apply(43001), 0);
-//        assertEquals((43000 - 11000) * 0.2, INCOME_TAX.apply(100000), 0);
+        assertEquals(((100000 - 43000) * 0.4) + ((43000 - 11000) * 0.2), INCOME_TAX.apply(100000), 0);
     }
 
     @Test

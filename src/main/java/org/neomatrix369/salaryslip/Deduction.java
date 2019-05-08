@@ -1,5 +1,8 @@
 package org.neomatrix369.salaryslip;
 
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public enum Deduction {
 
     INCOME_TAX(
@@ -13,8 +16,16 @@ public enum Deduction {
         new Calculation(new Range(43000, Integer.MAX_VALUE), 0.02)
     );
 
-    private Deduction(Calculation... calculations) {
+    private Calculation[] calculations;
 
+    Deduction(Calculation... calculations) {
+
+        this.calculations = calculations;
+    }
+
+    public double apply(int salary) {
+
+        return Stream.of(calculations).mapToDouble((calculation) -> calculation.apply(salary)).sum();
     }
 
     private static class Calculation {
@@ -28,7 +39,7 @@ public enum Deduction {
             this.rate = rate;
         }
 
-        public double apply(int salary) {
+        Double apply(int salary) {
 
             return this.range.apply(salary) * this.rate;
         }

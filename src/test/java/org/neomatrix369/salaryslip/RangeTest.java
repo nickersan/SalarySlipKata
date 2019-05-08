@@ -36,4 +36,6 @@ public class RangeTest {
         assertEquals(1, new Range(20, 30).apply(21));
         assertEquals(9, new Range(20, 30).apply(29));
     }
+
+    //TODO: add tests for constructor args.
 }

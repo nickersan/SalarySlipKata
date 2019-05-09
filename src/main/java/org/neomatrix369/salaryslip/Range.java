@@ -2,12 +2,12 @@ package org.neomatrix369.salaryslip;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
-public class Range {
+class Range {
 
     private int lower;
     private int upper;
 
-    public Range(int lower, int upper) {
+    Range(int lower, int upper) {
 
         checkArgument(lower >= 0, "Lower must be >= 0");
         checkArgument(upper >= lower, "Upper must be > lower");
@@ -16,7 +16,7 @@ public class Range {
         this.upper = upper;
     }
 
-    public int apply(int value) {
+    int apply(int value) {
 
         if (value > this.lower) {
 

@@ -1,12 +1,12 @@
 package org.neomatrix369.salaryslip;
 
 import static org.junit.Assert.assertEquals;
-import static org.neomatrix369.salaryslip.Deduction.INCOME_TAX;
-import static org.neomatrix369.salaryslip.Deduction.NATIONAL_INSURANCE;
+import static org.neomatrix369.salaryslip.Deductions.INCOME_TAX;
+import static org.neomatrix369.salaryslip.Deductions.NATIONAL_INSURANCE;
 
 import org.junit.Test;
 
-public class DeductionTest {
+public class DeductionsTest {
 
     @Test
     public void testIncomeTaxBelowThreshold() {
@@ -26,6 +26,18 @@ public class DeductionTest {
 
         assertEquals(((43000 - 11000) * 0.2) + (1 * 0.4), INCOME_TAX.apply(43001), 0);
         assertEquals(((100000 - 43000) * 0.4) + ((43000 - 11000) * 0.2), INCOME_TAX.apply(100000), 0);
+    }
+
+    @Test
+    public void testIncomeTaxWithPersonalAllowanceRemoved() {
+
+//        assertEquals(((43000 - 11000) * 0.2) + (1 * 0.4), INCOME_TAX.apply(100001), 0);
+//        assertEquals(((100000 - 43000) * 0.4) + ((43000 - 11000) * 0.2), INCOME_TAX.apply(100000), 0);
+    }
+
+    @Test
+    public void testIncomeTaxAboveTopThreadhold() {
+
     }
 
     @Test

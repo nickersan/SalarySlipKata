@@ -2,33 +2,33 @@ package org.neomatrix369.salaryslip;
 
 public class RangeCalculations {
 
-    public static final RangeCalculation INCOME_TAX_LOWER = new RangeCalculation(
+    public static final RangeCalculation INCOME_TAX_LOWER = RangeCalculation.percentage(
         Ranges.INCOME_TAX_LOWER,
-        0.2
+        20
     );
 
-    public static final RangeCalculation INCOME_TAX_HIGHER = new RangeCalculation(
+    public static final RangeCalculation INCOME_TAX_HIGHER = RangeCalculation.percentage(
         Ranges.INCOME_TAX_HIGHER,
-        0.4
+        40
     );
 
-    public static final RangeCalculation INCOME_TAX_TOP = new RangeCalculation(
+    public static final RangeCalculation INCOME_TAX_TOP = RangeCalculation.percentage(
         Ranges.INCOME_TAX_TOP,
-        0.45
+        45
     );
 
-    public static final RangeCalculation INCOME_TAX_PERSONAL_ALLOWANCE_EROSION = new RangeCalculation(
+    public static final RangeCalculation INCOME_TAX_PERSONAL_ALLOWANCE_EROSION = RangeCalculation.custom(
         Ranges.INCOME_TAX_PERSONAL_ALLOWANCE_EROSION,
         (salary) -> (salary / 2) * 0.4
     );
 
-    public static final RangeCalculation NATIONAL_INSURANCE_LOWER = new RangeCalculation(
+    public static final RangeCalculation NATIONAL_INSURANCE_LOWER = RangeCalculation.percentage(
         Ranges.NATIONAL_INSURANCE_LOWER, 
-        0.12
+        12
     );
 
-    public static final RangeCalculation NATIONAL_INSURANCE_TOP = new RangeCalculation(
+    public static final RangeCalculation NATIONAL_INSURANCE_TOP = RangeCalculation.percentage(
         Ranges.NATIONAL_INSURANCE_TOP, 
-        0.02
+        2
     );
 }

@@ -13,13 +13,13 @@ import org.junit.Test;
 public class RangeCalculationTest {
 
     @Test
-    public void testWithRate() {
+    public void testWithPercentage() {
 
-        assertEquals(5, new RangeCalculation(new Range(10, 20), 0.5).apply(20), 0);
+        assertEquals(5, RangeCalculation.percentage(new Range(10, 20), 50).apply(20), 0);
     }
 
     @Test
-    public void testWithCalculation() {
+    public void testWithCustom() {
 
         int salary = 20;
         int salaryPart = 10;
@@ -33,7 +33,7 @@ public class RangeCalculationTest {
         expect(calculation.apply(salaryPart)).andReturn(expectedResult);
         replay(calculation);
 
-        assertEquals(expectedResult, new RangeCalculation(range, calculation).apply(salary), 0);
+        assertEquals(expectedResult, RangeCalculation.custom(range, calculation).apply(salary), 0);
 
         verify(range, calculation);
     }

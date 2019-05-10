@@ -19,7 +19,8 @@ public class RangeCalculations {
 
     public static final RangeCalculation INCOME_TAX_PERSONAL_ALLOWANCE_EROSION = RangeCalculation.custom(
         Ranges.INCOME_TAX_PERSONAL_ALLOWANCE_EROSION,
-        (salary) -> (salary / 2) * 0.4
+        (salary) -> salary / 2,
+        (appliedTo) -> appliedTo * 0.4
     );
 
     public static final RangeCalculation NATIONAL_INSURANCE_LOWER = RangeCalculation.percentage(

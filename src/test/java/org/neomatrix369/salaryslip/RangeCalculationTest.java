@@ -23,18 +23,23 @@ public class RangeCalculationTest {
 
         int salary = 20;
         int salaryPart = 10;
-        double expectedResult = 5;
+        int appliedToResult = 5;
+        double expectedResult = 2.5;
 
         Range range = createMock(Range.class);
         expect(range.apply(salary)).andReturn(salaryPart);
         replay(range);
 
+        Function<Integer, Integer> appliedTo = createMock(Function.class);
+        expect(appliedTo.apply(salaryPart)).andReturn(appliedToResult);
+        replay(appliedTo);
+
         Function<Integer, Double> calculation = createMock(Function.class);
-        expect(calculation.apply(salaryPart)).andReturn(expectedResult);
+        expect(calculation.apply(appliedToResult)).andReturn(expectedResult);
         replay(calculation);
 
-        assertEquals(expectedResult, RangeCalculation.custom(range, calculation).apply(salary), 0);
+        assertEquals(expectedResult, RangeCalculation.custom(range, appliedTo, calculation).apply(salary), 0);
 
-        verify(range, calculation);
+        verify(range, appliedTo, calculation);
     }
 }
